@@ -24,8 +24,9 @@ const goToHome = () => {
 .star-wrapper {
   position: fixed;
   inset: 0;
-  background: url('../assets/estrellas.jpg') center center / cover no-repeat;
-  overflow: hidden;
+  background-image: url('../assets/estrellas.jpg');
+  background-repeat: repeat;
+  background-size: auto;
   animation: moveBackground 60s linear infinite;
 }
 
@@ -34,7 +35,7 @@ const goToHome = () => {
     background-position: 0 0;
   }
   to {
-    background-position: -1000px 1000px;
+    background-position: 100% 100%;
   }
 }
 .container {
@@ -92,6 +93,9 @@ const goToHome = () => {
   .container {
     padding: 1rem;
   }
+}
+.title {
+  font-family: 'Star Jedi V2', sans-serif;
 }
 </style>
 
