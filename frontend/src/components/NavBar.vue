@@ -8,6 +8,7 @@
       <div class="right">
         <RouterLink to="/home" class="nav-button">Inicio</RouterLink>
         <RouterLink to="/characters" class="nav-button characters-button">Personajes</RouterLink>
+        <RouterLink to="/planets" class="nav-button planets-button">Planetas</RouterLink>
       </div>
     </nav>
   </div>
@@ -81,6 +82,7 @@ import { RouterLink } from 'vue-router'
   font-size: 1rem;
   color: #ffffff;
   background: transparent;
+  text-decoration: none;
   transition:
     background 0.3s ease,
     color 0.3s ease,
@@ -111,8 +113,29 @@ import { RouterLink } from 'vue-router'
   color: white;
   background: linear-gradient(90deg, blue, red);
   box-shadow:
-    0 0 12px blue,
+    0 0 60px blue,
     0 0 24px red;
+}
+.planets-button {
+  color: white;
+  border: 2px solid white;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.planets-button:hover {
+  color: white;
+  background: linear-gradient(90deg, #00ff00, #007700); 
+  box-shadow:
+    0 0 12px #00ff00,
+    0 0 24px #007700;
 }
 body,
 #app {

@@ -32,6 +32,8 @@ import lukeImage from '@/assets/LukeSkywalker.jpg'
 import obiwanImage from '@/assets/ObiWan.jpg'
 import darthvaderImage from '@/assets/Darthvader.jpg'
 import anakinImage from '@/assets/Anakinskywalker.jpg'
+import leiaImage from '@/assets/Leiaorgana.jpg'
+import hanImage from '@/assets/Hansolo.jpg'
 
 const characters = ref([])
 
@@ -59,6 +61,10 @@ function getCharacterImage(name) {
     return darthvaderImage
   }else if (name === 'Anakin Skywalker') {
     return anakinImage
+  }else if (name === 'Leia Organa') {
+    return leiaImage
+  }else if (name === 'Han Solo') {
+    return hanImage
   }else {
     return defaultImage
   }
@@ -117,7 +123,7 @@ onMounted(() => {
 
 .character-image {
   width: 200px;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -141,8 +147,13 @@ onMounted(() => {
 }
 
 .flip-card-back li {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   margin-bottom: 6px;
   color: #ffffff;
+}
+.flip-card-front h2,
+.flip-card-back h2,
+.flip-card-back li {
+  transition: font-size 0.3s ease;
 }
 </style>
