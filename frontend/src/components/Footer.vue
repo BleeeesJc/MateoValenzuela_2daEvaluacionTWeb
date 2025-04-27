@@ -1,7 +1,7 @@
 <template>
   <footer class="star-footer">
     <div class="footer-content">
-      <p class="footer-text">© 2025 Star Wars Portal. All rights reserved.</p>
+      <p class="footer-text">© 2025 Star Wars Portal. All rights reserved. Mateo Valenzuela</p>
       <div class="footer-links">
         <RouterLink to="/privacy" class="footer-link">Privacidad</RouterLink>
         <RouterLink to="/terms" class="footer-link">Términos</RouterLink>

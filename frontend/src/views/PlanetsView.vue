@@ -20,6 +20,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: url('@/assets/fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
   }
   
   .main-content {
