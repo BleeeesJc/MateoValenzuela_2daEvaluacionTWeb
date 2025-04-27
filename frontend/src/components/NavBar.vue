@@ -7,7 +7,7 @@
       </div>
       <div class="right">
         <RouterLink to="/home" class="nav-button">Inicio</RouterLink>
-        <RouterLink to="/about" class="nav-button">Acerca</RouterLink>
+        <RouterLink to="/characters" class="nav-button characters-button">Personajes</RouterLink>
       </div>
     </nav>
   </div>
@@ -18,12 +18,11 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped>
-
 .star-wrapper {
   position: fixed;
-  inset: 0 0 auto 0;   
+  inset: 0 0 auto 0;
   width: 100%;
-  height: 80px;        
+  height: 80px;
   background: url('../assets/estrellas.jpg') repeat;
   background-size: 400px 400px;
   overflow: hidden;
@@ -31,8 +30,12 @@ import { RouterLink } from 'vue-router'
   z-index: 10;
 }
 @keyframes scrollStars {
-  from { background-position: 0 0; }
-  to   { background-position: 1000px 0; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
 }
 
 .container {
@@ -72,24 +75,47 @@ import { RouterLink } from 'vue-router'
 .nav-button {
   font-family: 'Arial', sans-serif;
   padding: 0.5rem 1rem;
-  border: 2px solid #ffe81f;
+  border: 2px solid #ffffff;
   border-radius: 0.25rem;
   text-transform: uppercase;
   font-size: 1rem;
-  color: #ffe81f;
+  color: #ffffff;
   background: transparent;
-  transition: 
-    background 0.3s ease, 
+  transition:
+    background 0.3s ease,
     color 0.3s ease,
     box-shadow 0.3s ease;
 }
 .nav-button:hover {
-  background: #ffe81f;
+  background: #ffffff;
   color: #000;
-  box-shadow: 0 0 12px #ffe81f, 0 0 24px #ffe81f;
+  box-shadow:
+    0 0 12px #b8a713,
+    0 0 24px #a59612;
 }
-body, #app {
-  padding-top: 80px; 
+.characters-button {
+  color: white;
+  border: 2px solid white;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
+.characters-button:hover {
+  color: white;
+  background: linear-gradient(90deg, blue, red);
+  box-shadow:
+    0 0 12px blue,
+    0 0 24px red;
+}
+body,
+#app {
+  padding-top: 80px;
+}
 </style>

@@ -16,12 +16,9 @@ import { RouterLink } from 'vue-router'
 
 <style scoped>
 .star-footer {
-  /* ocupa todo el ancho y no se contrae */
   width: 100%;
   flex-shrink: 0;
-  /* si por alguna razón tu main-content no llega al bottom */
   margin-top: auto;
-
   background: url('../assets/estrellas.jpg') repeat;
   background-size: 400px 400px;
   animation: scrollFooterStars 60s linear infinite;
@@ -32,7 +29,6 @@ import { RouterLink } from 'vue-router'
   overflow: hidden;
 }
 
-/* Animación de fondo */
 @keyframes scrollFooterStars {
   from {
     background-position: 0 0;
@@ -42,11 +38,10 @@ import { RouterLink } from 'vue-router'
   }
 }
 
-/* Contenido del footer */
 .footer-content {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;        /* centra el contenido */
+  margin: 0 auto;       
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,7 +49,6 @@ import { RouterLink } from 'vue-router'
   padding: 0 2rem;
 }
 
-/* Texto principal */
 .footer-text {
   font-family: 'Star Jedi', sans-serif;
   font-size: 1rem;
@@ -64,7 +58,6 @@ import { RouterLink } from 'vue-router'
     0 0 16px #ffe81f;
 }
 
-/* Links */
 .footer-links {
   display: flex;
   gap: 1.5rem;
@@ -72,7 +65,7 @@ import { RouterLink } from 'vue-router'
 
 .footer-link {
   font-family: 'Star Jedi', sans-serif;
-  color: #ffe81f;
+  color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   transition:
@@ -87,7 +80,6 @@ import { RouterLink } from 'vue-router'
     0 0 24px #ffe81f;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
   .footer-content {
     gap: 0.5rem;
