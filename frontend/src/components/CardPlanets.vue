@@ -30,6 +30,10 @@
   import hothImage from '@/assets/Hoth.jpg'
   import yavinImage from '@/assets/Yavin.jpg'
   import alderaanImage from '@/assets/Aldeeran.jpg'
+  import dagoImage from '@/assets/Dago.jpeg'
+  import bespinImage from '@/assets/Bespin.jpg'
+  import endorImage from '@/assets/Endor.jpg'
+  import nabooImage from '@/assets/Naboo.jpg'
   
   const planets = ref([])
   
@@ -57,6 +61,14 @@
       return yavinImage
     }else if (name === 'Alderaan') {
       return alderaanImage
+    }else if (name === 'Dagobah') {
+      return dagoImage
+    }else if (name === 'Bespin') {
+      return bespinImage
+    }else if (name === 'Endor') {
+      return endorImage
+    }else if (name === 'Naboo') {
+      return nabooImage
     }else {
       return defaultImage
     }

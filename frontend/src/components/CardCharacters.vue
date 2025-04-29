@@ -47,6 +47,14 @@ import darthvaderImage from '@/assets/Darthvader.jpg'
 import anakinImage from '@/assets/Anakinskywalker.jpg'
 import leiaImage from '@/assets/Leiaorgana.jpg'
 import hanImage from '@/assets/Hansolo.jpg'
+import cp3Image from '@/assets/C3po.jpg'
+import r2Image from '@/assets/R2d2.jpg'
+import owenImage from '@/assets/Owenlars.jpg'
+import beruImage from '@/assets/Berulars.jpg'
+import r5Image from '@/assets/R5d4.jpg'
+import biImage from '@/assets/Biggs.jpg'
+import moffImage from '@/assets/Moff.jpg'
+import cheImage from '@/assets/Che.jpg'
 
 const characters = ref([])
 const loading = ref(false)
@@ -94,6 +102,22 @@ function getCharacterImage(name) {
       return leiaImage
     case 'Han Solo':
       return hanImage
+    case 'C-3PO':
+      return cp3Image
+    case 'R2-D2':
+      return r2Image
+    case 'Owen Lars':
+      return owenImage
+    case 'Beru Whitesun lars':
+      return beruImage
+    case 'R5-D4':
+      return r5Image
+    case 'Biggs Darklighter':
+      return biImage
+    case 'Wilhuff Tarkin':
+      return moffImage
+    case 'Chewbacca':
+      return cheImage
     default:
       return defaultImage
   }
