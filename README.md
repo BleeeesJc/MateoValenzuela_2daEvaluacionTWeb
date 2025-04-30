@@ -39,7 +39,7 @@ src/
 │  └─ Planets.vue
 ├─ App.vue           # Componente raíz
 └─ main.js           # Punto de entrada, configuración de Vue y Router
-
+```
 ## ✨ Autor
 
 - **Mateo Valenzuela**
