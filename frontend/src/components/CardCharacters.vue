@@ -61,26 +61,17 @@ const loading = ref(false)
 const error = ref(false)
 
 async function fetchAllCharacters() {
-  loading.value = true
-  error.value = false
   let url = 'https://swapi.py4e.com/api/people/'
 
   while (url) {
     try {
       const res = await fetch(url)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
-
       const data = await res.json()
       characters.value.push(...data.results)
       url = data.next
     } catch (err) {
       console.error('Error fetching characters:', err)
-      error.value = true
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'No se pudieron cargar los personajes.',
-      })
       break
     }
   }
@@ -123,32 +114,10 @@ function getCharacterImage(name) {
   }
 }
 
-function handleOffline() {
-  Swal.fire({
-    icon: 'warning',
-    title: 'Desconectado',
-    text: 'Parece que has perdido la conexión.',
-  })
-}
-
-function handleOnline() {
-  Swal.fire({
-    icon: 'success',
-    title: 'Conectado',
-    text: 'Conexión restablecida.',
-  })
-}
-
 onMounted(() => {
-  window.addEventListener('offline', handleOffline)
-  window.addEventListener('online', handleOnline)
   fetchAllCharacters()
 })
 
-onBeforeUnmount(() => {
-  window.removeEventListener('offline', handleOffline)
-  window.removeEventListener('online', handleOnline)
-})
 </script>
 
 <style scoped>
@@ -164,27 +133,9 @@ onBeforeUnmount(() => {
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   justify-content: center;
-}
-
-.loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-.error-message {
-  width: 100%;
-  text-align: center;
-  color: #fff;
 }
 
 .flip-card {
@@ -261,4 +212,10 @@ onBeforeUnmount(() => {
 .flip-card-back li {
   transition: font-size 0.3s ease;
 }
+@media (max-width: 480px) {
+  .cards-wrapper {
+    gap: 12px;
+  }
+}
+
 </style>

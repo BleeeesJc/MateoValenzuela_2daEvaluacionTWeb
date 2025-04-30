@@ -16,13 +16,12 @@
       </section>
       <section class="news-section">
         <div class="news-card" v-for="(news, index) in newsData" :key="index">
-          <img :src="news.image" alt="Noticia {{ index + 1 }}" class="news-card-image" />
+          <img :src="news.image" :alt="`Noticia ${index + 1}`" class="news-card-image" />
           <h3>Noticia {{ index + 1 }}</h3>
-          <p>{{ news.description }}</p> <!-- Descripción personalizada por noticia -->
+          <p>{{ news.description }}</p>
         </div>
       </section>
     </main>
-
     <Footer />
   </div>
 </template>
@@ -35,18 +34,9 @@ import noticia1 from '@/assets/noticia1.jpg'
 import noticia2 from '@/assets/noticia2.jpg'
 import noticia3 from '@/assets/noticia3.jpeg'
 const newsData = [
-  {
-    image: noticia1,
-    description: 'Este 25 de abril se celebra el aniversario del estreno de la famosa película *Star Wars: Episodio III - La Venganza de los Sith*. Revive una de las entregas más impactantes de la saga, donde Anakin Skywalker enfrenta su destino final, la caída de la República se sella y los separatistas libran su última batalla contra los Jedi. Un evento que cambió el rumbo de la galaxia para siempre.'
-  },
-  {
-    image: noticia2,
-    description: 'La nueva temporada de *The Mandalorian* ha llegado con más acción, nuevos aliados y enemigos inesperados. Acompaña a Din Djarin y Grogu en su travesía a través de los rincones más peligrosos de la galaxia mientras se enfrentan a nuevas amenazas y secretos del legado mandaloriano son revelados.'
-  },
-  {
-    image: noticia3,
-    description: '*The Acolyte* promete sumergirnos en una era jamás explorada en el universo de Star Wars: el final de la Alta República. Con una trama llena de intriga oscura y el surgimiento de poderes siniestros, esta nueva serie explorará los orígenes del lado oscuro de la Fuerza y los eventos que pavimentaron el camino para el surgimiento de los Sith.'
-  }
+  { image: noticia1, description: 'Este 25 de abril se celebra el aniversario del estreno de la famosa película *Star Wars: Episodio III - La Venganza de los Sith*...' },
+  { image: noticia2, description: 'La nueva temporada de *The Mandalorian* ha llegado con más acción...' },
+  { image: noticia3, description: '*The Acolyte* promete sumergirnos en una era jamás explorada...' }
 ]
 </script>
 
@@ -58,10 +48,14 @@ const newsData = [
   background: url('@/assets/fondo.jpg') no-repeat center center fixed;
   background-size: cover;
 }
+
 .main-content {
   flex: 1;
-  padding-top: 40px; 
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+
 .carousel-section {
   width: 100%;
   margin: 0;
@@ -70,11 +64,12 @@ const newsData = [
 .carousel-wrapper {
   width: 100%;
   max-width: none;
-  height: 700px;
+  height: clamp(700px, 50vh, 200px);
   margin: 2rem 0;
 }
+
 .about-section {
-  width: 80%;
+  width: clamp(85%, 60%, 80%);
   margin: 2rem auto;
   padding: 1.5rem;
   background-color: rgba(255, 255, 255, 0.05);
@@ -86,27 +81,27 @@ const newsData = [
 .about-section h2 {
   margin-bottom: 1rem;
   font-family: 'Star Jedi V2', sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
 }
 .about-section p {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
 }
 
 .news-section {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  justify-content: center;
   margin: 2rem auto 4rem;
-  width: 90%;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 .news-card {
   background: radial-gradient(circle at top left, #1a1a1a, #000);
   border: 2px solid #ffffff33;
   border-radius: 12px;
   box-shadow: 0 0 12px #555;
-  width: 300px;
   padding: 1.5rem;
   color: #f5f5f5;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -119,19 +114,46 @@ const newsData = [
 .news-card h3 {
   margin-top: 0;
   font-family: 'Star Jedi V2', sans-serif;
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   color: #ffe81f;
 }
 .news-card p {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   margin: 0.5rem 0 0;
 }
 
 .news-card-image {
   width: 100%;
-  height: 300px;
+  height: clamp(150px, 30vh, 300px);
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    width: 90%;
+    padding: 1rem;
+  }
+  .news-section {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: clamp(80px, 12vw, 120px);
+  }
+  .about-section {
+    width: 95%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+  }
+  .news-card {
+    padding: 1rem;
+  }
+  .news-card-image {
+    height: clamp(120px, 25vh, 200px);
+  }
 }
 </style>

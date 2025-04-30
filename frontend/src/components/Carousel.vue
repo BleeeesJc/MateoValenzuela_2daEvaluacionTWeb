@@ -50,9 +50,9 @@ onUnmounted(() => {
 <style scoped>
 .carousel-wrapper {
   position: relative;
-  width: 100vw;
-  height: 600px;
-  margin: 0;
+  width: 100%;
+  height: clamp(300px, 60vh, 600px);
+  margin: 0 auto;
   overflow: hidden;
   background: url('/src/assets/estrellas.jpg') repeat;
   background-size: 500px 500px;
@@ -97,45 +97,63 @@ onUnmounted(() => {
 }
 .nav-button {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(2rem, 5vw, 3rem);
+  height: clamp(2rem, 5vw, 3rem);
   background: transparent;
   border: none;
   cursor: pointer;
   z-index: 2;
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 .carousel-wrapper:hover .nav-button {
-  opacity: 1; 
+  opacity: 1;
 }
 .nav-button::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: calc(50% + var(--blade-offset));
-  width: var(--blade-length);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(60px, 10vw, 80px);
   height: 4px;
   background: var(--blade-color);
   border-radius: 2px;
   box-shadow: 0 0 8px var(--blade-color);
-  transform: translateY(-50%);
-  opacity: 1;
 }
 .nav-button.prev {
   left: 1rem;
   --blade-color: #00b4fc;
-  --blade-length: 80px;
-  --blade-offset: -20px;
 }
 .nav-button.next {
   right: 1rem;
   --blade-color: #ff0000;
-  --blade-length: 80px;
-  --blade-offset: -60px;
 }
 .nav-button:hover::before {
   opacity: 1;
+}
+@media (max-width: 768px) {
+  .slide-text {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    bottom: 15px;
+    padding: 0.4rem 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .slide-text {
+    font-size: clamp(0.9rem, 5vw, 1.2rem);
+    bottom: 10px;
+    padding: 0.3rem 0.6rem;
+    white-space: normal;
+    text-align: center;
+  }
+  .nav-button.prev {
+    left: 0.5rem;
+  }
+  .nav-button.next {
+    right: 0.5rem;
+  }
 }
 </style>

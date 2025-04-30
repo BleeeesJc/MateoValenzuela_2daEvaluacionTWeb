@@ -14,39 +14,28 @@
   </div>
 </template>
 
-<script setup>
-import { RouterLink } from 'vue-router'
-</script>
-
 <style scoped>
 .star-wrapper {
   position: fixed;
-  inset: 0 0 auto 0;
-  width: 100%;
-  height: 80px;
+  top: 0; left: 0; right: 0;
   background: url('../assets/estrellas.jpg') repeat;
   background-size: 400px 400px;
-  overflow: hidden;
   animation: scrollStars 60s linear infinite;
   z-index: 10;
 }
+
 @keyframes scrollStars {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 1000px 0;
-  }
+  from { background-position: 0 0; }
+  to   { background-position: 1000px 0; }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   color: #f5f5f5;
 }
 
@@ -69,76 +58,92 @@ import { RouterLink } from 'vue-router'
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
 .right {
   display: flex;
   gap: 1rem;
 }
 .nav-button {
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   padding: 0.5rem 1rem;
-  border: 2px solid #ffffff;
+  border: 2px solid #fff;
   border-radius: 0.25rem;
   text-transform: uppercase;
   font-size: 1rem;
-  color: #ffffff;
+  color: #fff;
   background: transparent;
   text-decoration: none;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 .nav-button:hover {
-  background: #ffffff;
+  background: #fff;
   color: #000;
-  box-shadow:
-    0 0 12px #b8a713,
-    0 0 24px #a59612;
+  box-shadow: 0 0 12px #b8a713, 0 0 24px #a59612;
 }
-.characters-button {
-  color: white;
-  border: 2px solid white;
-  background: transparent;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  text-transform: uppercase;
-  font-size: 1rem;
-  transition:
-    background 0.5s ease,
-    color 0.5s ease,
-    box-shadow 0.5s ease;
-}
-
 .characters-button:hover {
-  color: white;
   background: linear-gradient(90deg, blue, red);
-  box-shadow:
-    0 0 60px blue,
-    0 0 24px red;
+  box-shadow: 0 0 60px blue, 0 0 24px red;
 }
-.planets-button {
-  color: white;
-  border: 2px solid white;
-  background: transparent;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  text-transform: uppercase;
-  font-size: 1rem;
-  transition:
-    background 0.5s ease,
-    color 0.5s ease,
-    box-shadow 0.5s ease;
+.planets-button:hover {
+  background: linear-gradient(90deg, #0f0, #070);
+  box-shadow: 0 0 12px #0f0, 0 0 24px #070;
 }
 
-.planets-button:hover {
-  color: white;
-  background: linear-gradient(90deg, #00ff00, #007700); 
-  box-shadow:
-    0 0 12px #00ff00,
-    0 0 24px #007700;
-}
-body,
-#app {
+body, #app {
   padding-top: 80px;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .left {
+    justify-content: center;
+  }
+  .title {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+  }
+  .right {
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .nav-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  body, #app {
+    padding-top: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+  .logo {
+    height: 40px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .nav-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  body, #app {
+    padding-top: 200px;
+  }
 }
 </style>

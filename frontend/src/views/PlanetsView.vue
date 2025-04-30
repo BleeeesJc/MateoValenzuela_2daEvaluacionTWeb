@@ -86,13 +86,37 @@ onBeforeUnmount(() => {
   background: url('@/assets/fondo.jpg') no-repeat center center fixed;
   background-size: cover;
 }
-
 .main-content {
   flex: 1;
-  padding-top: 80px;
-  background-color: #0b0b0b;
-  color: #fff;
   position: relative;
+  padding-top: clamp(80px, 8vw, 120px);
+}
+@media (max-width: 768px) {
+  .home-page {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    background-attachment: scroll;
+    background-position: top;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    background-attachment: scroll;
+    padding-top: clamp(130px, 10vw, 90px);
+    padding-bottom: clamp(40px, 8vw, 50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    background-attachment: scroll;
+    padding-top: clamp(200px, 12vw, 200px);
+  }
 }
 
 .loading-overlay {
@@ -107,11 +131,17 @@ onBeforeUnmount(() => {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
+.loading-overlay p {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
 
 .error-message {
   width: 100%;
   text-align: center;
   color: #fff;
   padding: 20px;
+}
+.error-message p {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
 }
 </style>

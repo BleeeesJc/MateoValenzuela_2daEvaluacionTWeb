@@ -22,57 +22,50 @@ import { RouterLink } from 'vue-router'
   background: url('../assets/estrellas.jpg') repeat;
   background-size: 400px 400px;
   animation: scrollFooterStars 60s linear infinite;
-
-  padding: 1rem 0;
+  padding: clamp(0.75rem, 2vw, 1.5rem) 0;
   color: #ffe81f;
-  text-align: center;
   overflow: hidden;
 }
-
 @keyframes scrollFooterStars {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -1000px 0;
-  }
+  from { background-position: 0 0; }
+  to   { background-position: -1000px 0; }
 }
 
 .footer-content {
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;       
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #f5f5f5;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 0 2rem;
 }
 
 .footer-text {
   font-family: 'Star Jedi', sans-serif;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   letter-spacing: 0.1em;
   text-shadow:
     0 0 8px #ffe81f,
     0 0 16px #ffe81f;
+  margin: 0;
 }
 
 .footer-links {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .footer-link {
   font-family: 'Star Jedi', sans-serif;
   color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
-
 .footer-link:hover {
   color: #ffffff;
   text-shadow:
@@ -80,9 +73,24 @@ import { RouterLink } from 'vue-router'
     0 0 24px #ffe81f;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  .footer-text {
+    text-align: center;
+  }
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
   .footer-content {
     gap: 0.5rem;
+    padding: 0 0.5rem;
   }
   .footer-links {
     flex-direction: column;
