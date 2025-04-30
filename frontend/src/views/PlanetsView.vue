@@ -126,6 +126,7 @@ onBeforeUnmount(() => {
 }
 .loading-overlay p {
   font-size: clamp(1rem, 4vw, 1.5rem);
+  color: #fff;
 }
 /* Mensaje de error centrado */
 .error-message {
