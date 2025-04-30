@@ -1,26 +1,33 @@
 <template>
   <div class="star-wrapper">
     <div class="container">
+      <!-- Imagen del logo de Star Wars -->
       <img
         src="../assets/logostarwars.png"
         alt="Star Wars Logo"
         class="logo"
       />
+      <!-- Título principal del portal -->
       <h1 class="title">Star Wars Portal</h1>
+      <!-- Botón que redirige al usuario al home -->
       <button class="enter-button" @click="goToHome">Enter Portal</button>
     </div>
   </div>
 </template>
 
 <script setup>
+// Importa el router para poder navegar entre rutas
 import { useRouter } from 'vue-router'
+// Inicializa el router
 const router = useRouter()
+// Función para ir a la ruta '/home'
 const goToHome = () => {
   router.push('/home')
 }
 </script>
 
 <style scoped>
+/* Estilo del contenedor principal con fondo animado */
 .star-wrapper {
   position: fixed;
   inset: 0;
@@ -32,26 +39,27 @@ const goToHome = () => {
   align-items: center;
   justify-content: center;
 }
+/* Animación de movimiento del fondo */
 @keyframes moveBackground {
   from { background-position: 0 0; }
   to   { background-position: 100% 100%; }
 }
-
+/* Contenedor del contenido centrado */
 .container {
   text-align: center;
   padding: 1rem;
 }
-
+/* Estilo del logo */
 .logo {
-  width: clamp(200px, 50vw, 400px);
+  width: clamp(200px, 50vw, 400px); 
   margin-bottom: clamp(1rem, 5vw, 2rem);
-  filter: drop-shadow(0 0 15px #ffe81f);
+  filter: drop-shadow(0 0 15px #ffe81f); /* Brillo amarillo */
   transition: transform 0.3s ease;
 }
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Efecto al pasar el mouse */
 }
-
+/* Estilo del título */
 .title {
   font-family: 'Star Jedi V2', sans-serif;
   font-size: clamp(1.5rem, 8vw, 3rem);
@@ -59,9 +67,9 @@ const goToHome = () => {
   text-transform: uppercase;
   margin-bottom: clamp(1rem, 4vw, 2rem);
   color: #ffffff;
-  text-shadow: 0 0 8px #ffe81f;
+  text-shadow: 0 0 8px #ffe81f; /* Resplandor amarillo */
 }
-
+/* Botón para entrar al portal */
 .enter-button {
   padding: clamp(0.5rem, 3vw, 1rem) clamp(1rem, 10vw, 2rem);
   font-size: clamp(1rem, 4vw, 1.25rem);
@@ -77,9 +85,9 @@ const goToHome = () => {
 .enter-button:hover {
   background: #ffe81f;
   color: #000;
-  box-shadow: 0 0 20px #ffe81f, 0 0 40px #ffe81f;
+  box-shadow: 0 0 20px #ffe81f, 0 0 40px #ffe81f; /* Efecto brillante */
 }
-
+/* Ajustes para pantallas medianas (tablets) */
 @media (max-width: 768px) {
   .logo {
     width: clamp(180px, 40vw, 300px);
@@ -93,7 +101,7 @@ const goToHome = () => {
     font-size: clamp(0.9rem, 5vw, 1.125rem);
   }
 }
-
+/* Ajustes para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
   .container {
     padding: 0.5rem;
@@ -112,4 +120,3 @@ const goToHome = () => {
   }
 }
 </style>
-

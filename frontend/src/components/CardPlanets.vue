@@ -1,11 +1,19 @@
 <template>
+  <!-- Contenedor principal que agrupa todas las tarjetas de planetas -->
   <div class="planet-container">
-    <div v-for="planet in planets" :key="planet.name" class="planet-card">
+    <!-- Recorre la lista de planetas y crea una tarjeta por cada uno -->
+    <div
+      v-for="planet in planets"
+      :key="planet.name"
+      class="planet-card"
+    >
+      <!-- Imagen del planeta: usa una función para elegir la imagen correcta -->
       <img
         :src="getPlanetImage(planet.name)"
         :alt="`Imagen de ${planet.name}`"
         class="planet-image"
       />
+      <!-- Información del planeta: nombre y lista de datos -->
       <div class="planet-info">
         <h2>{{ planet.name }}</h2>
         <ul>
@@ -21,6 +29,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+
+// Importa imágenes locales de cada planeta o un placeholder genérico
 import defaultImage from '@/assets/default.png'
 import tatooineImage from '@/assets/Tatooine.jpg'
 import hothImage from '@/assets/Hoth.jpg'
@@ -31,15 +41,20 @@ import bespinImage from '@/assets/Bespin.jpg'
 import endorImage from '@/assets/Endor.jpg'
 import nabooImage from '@/assets/Naboo.jpg'
 
+// Reactive ref para almacenar la lista de planetas
 const planets = ref([])
 
+// Función para traer todos los planetas de la API paginada
 async function fetchAllPlanets() {
   let url = 'https://swapi.py4e.com/api/planets/'
+  // Mientras exista una URL de siguiente página, seguimos pidiendo datos
   while (url) {
     try {
       const res = await fetch(url)
       const data = await res.json()
+      // Añade los resultados al array reactivo
       planets.value.push(...data.results)
+      // Actualiza la URL para la siguiente página (o null si ya no hay más)
       url = data.next
     } catch (err) {
       console.error('Error fetching planets:', err)
@@ -47,35 +62,29 @@ async function fetchAllPlanets() {
     }
   }
 }
-
+// Función que, según el nombre del planeta, devuelve la ruta de la imagen correspondiente
 function getPlanetImage(name) {
-  if (name === 'Tatooine') {
-    return tatooineImage
-  } else if (name === 'Hoth') {
-    return hothImage
-  } else if (name === 'Yavin IV') {
-    return yavinImage
-  } else if (name === 'Alderaan') {
-    return alderaanImage
-  } else if (name === 'Dagobah') {
-    return dagoImage
-  } else if (name === 'Bespin') {
-    return bespinImage
-  } else if (name === 'Endor') {
-    return endorImage
-  } else if (name === 'Naboo') {
-    return nabooImage
-  } else {
-    return defaultImage
+  switch (name) {
+    case 'Tatooine':    return tatooineImage
+    case 'Hoth':        return hothImage
+    case 'Yavin IV':    return yavinImage
+    case 'Alderaan':    return alderaanImage
+    case 'Dagobah':     return dagoImage
+    case 'Bespin':      return bespinImage
+    case 'Endor':       return endorImage
+    case 'Naboo':       return nabooImage
+    default:            return defaultImage
   }
 }
 
+// Cuando el componente se monte, dispara la carga de planetas
 onMounted(() => {
   fetchAllPlanets()
 })
 </script>
 
 <style scoped>
+/* Contenedor flexible que adapta las tarjetas según el ancho */
 .planet-container {
   display: flex;
   flex-wrap: wrap;
@@ -85,6 +94,7 @@ onMounted(() => {
   justify-content: center;
 }
 
+/* Estilo de cada tarjeta: fondo oscuro con borde y sombra */
 .planet-card {
   display: flex;
   flex-direction: row;
@@ -100,6 +110,7 @@ onMounted(() => {
     box-shadow 0.3s ease;
 }
 
+/* Al pasar el ratón, eleva la tarjeta y cambia la sombra */
 .planet-card:hover {
   transform: translateY(-4px);
   box-shadow:
@@ -107,6 +118,7 @@ onMounted(() => {
     0 0 32px #006effa4;
 }
 
+/* Imagen del planeta: tamaño fijo y recorte adecuado */
 .planet-image {
   width: 180px;
   height: 205px;
@@ -114,6 +126,7 @@ onMounted(() => {
   flex-shrink: 0;
 }
 
+/* Contenedor de texto: centrado verticalmente */
 .planet-info {
   padding: 16px;
   display: flex;
@@ -121,6 +134,7 @@ onMounted(() => {
   justify-content: center;
 }
 
+/* Título con tipografía estilo Star Wars */
 .planet-info h2 {
   margin: 0 0 8px;
   font-size: 1.4rem;
@@ -128,18 +142,21 @@ onMounted(() => {
   font-family: 'Star Jedi V2', sans-serif;
 }
 
+/* Lista sin viñetas ni márgenes internos */
 .planet-info ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Cada elemento de la lista con espaciado y tamaño de letra */
 .planet-info li {
   margin-bottom: 6px;
   font-size: 1.215rem;
   color: #f5f5f5;
 }
 
+/* Ajustes para pantallas pequeñas: tarjetas en columna y texto centrado */
 @media (max-width: 480px) {
   .planet-card {
     flex-direction: column;
